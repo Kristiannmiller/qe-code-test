@@ -39,4 +39,10 @@ describe("Myrapname.com", () => {
     expect(await page.click('text=Use Nickname'))
   });
 
+  it("should display an error message if first name input is blank", async () => {
+    await page.fill('[name=lastinitial]', 'M')
+    await page.click('text=Suggest Male Rap Name')
+    expect(await page.isVisible('text=You must enter your first name'))
+  });
+
 });

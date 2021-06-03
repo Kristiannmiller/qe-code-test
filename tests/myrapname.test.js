@@ -23,4 +23,8 @@ describe("Myrapname.com", () => {
     expect(page).not.toBeNull();
     expect(await page.title()).toBe('My Rap Name - A generator to automatically make rapper names')
   });
+
+  it("should have a form", async () => {
+    expect(await page.click('form'))
+  });
 });

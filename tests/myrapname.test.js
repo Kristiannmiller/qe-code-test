@@ -45,4 +45,13 @@ describe("Myrapname.com", () => {
     expect(await page.isVisible('text=You must enter your first name'))
   });
 
+  it("should allow a user to modify input values", async () => {
+    await page.fill('[name=firstname]', 'Kristi')
+    await page.fill('[name=lastinitial]', 'A')
+
+    expect(await page.innerText('[name=firstname]', 'Kristi'))
+    expect(await page.innerText('[name=lastinitial]', 'A'))
+    expect(await page.uncheck('[type=checkbox]')) // verify that checkbox is not checked?
+  });
+
 });

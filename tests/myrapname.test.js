@@ -19,7 +19,8 @@ describe("Myrapname.com", () => {
     await browser.close();
   });
 
-  it("should exist", async () => {
-    await page.goto("https://www.myrapname.com");
-  })
-})
+  it("should load myrapname.com", async () => {
+    expect(page).not.toBeNull();
+    expect(await page.title()).toBe('My Rap Name - A generator to automatically make rapper names')
+  });
+});

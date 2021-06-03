@@ -24,7 +24,12 @@ describe("Myrapname.com", () => {
     expect(await page.title()).toBe('My Rap Name - A generator to automatically make rapper names')
   });
 
-  it("should have a form", async () => {
+  it("should display a form", async () => {
     expect(await page.click('form'))
+  });
+
+  it("should display buttons", async () => {
+    expect(await page.click('text=Suggest Male Rap Name'))
+    expect(await page.click('text=Suggest Female Rap Name'))
   });
 });

@@ -32,4 +32,11 @@ describe("Myrapname.com", () => {
     expect(await page.click('text=Suggest Male Rap Name'))
     expect(await page.click('text=Suggest Female Rap Name'))
   });
+
+  it("should display inputs", async () => {
+    expect(await page.click('[name=firstname]'))
+    expect(await page.click('[name=lastinitial]'))
+    expect(await page.click('text=Use Nickname'))
+  });
+
 });

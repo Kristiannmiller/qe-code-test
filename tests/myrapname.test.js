@@ -39,7 +39,7 @@ describe("Myrapname.com", () => {
     expect(await page.click('text=Use Nickname'))
   });
 
-  it("should display an error message if first name input is blank", async () => {
+  it("should display an error message if first name input is left blank", async () => {
     await page.fill('[name=lastinitial]', 'M')
     await page.click('text=Suggest Male Rap Name')
     expect(await page.isVisible('text=You must enter your first name'))
@@ -65,15 +65,15 @@ describe("Myrapname.com", () => {
 
   it("should allow a user to create multiple female rap names and view previous names", async () => {
     const result = await page.innerText("div:has(div:has(h1))")
-    await page.fill('[name=firstname]', 'Kristi')
-    await page.fill('[name=lastinitial]', 'M')
+    await page.fill('[name=firstname]', 'Loretta')
+    await page.fill('[name=lastinitial]', 'X')
     await page.click('text=Suggest Female Rap Name')
     const result1 = await page.innerText("div:has(div:has(h1))")
 
     expect(await page.isVisible(`text=${result1}`))
 
-    await page.fill('[name=firstname]', 'Kristi')
-    await page.fill('[name=lastinitial]', 'M')
+    await page.fill('[name=firstname]', 'Henrietta')
+    await page.fill('[name=lastinitial]', 'P')
     await page.click('text=Suggest Female Rap Name')
     const result2 = await page.innerText("div:has(div:has(h1))")
 

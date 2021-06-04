@@ -32,12 +32,14 @@ describe("Myrapname.com", () => {
 
   it("should display a form", async () => {
     const form = await page.isVisible('form')
+
     expect(form).toBeTruthy()
   });
 
   it("should display buttons", async () => {
     const maleSubmitButton = await page.isVisible('text=Suggest Male Rap Name')
     const femaleSubmitButton = await page.isVisible('text=Suggest Female Rap Name')
+
     expect(maleSubmitButton).toBeTruthy()
     expect(femaleSubmitButton).toBeTruthy()
   });
@@ -46,6 +48,7 @@ describe("Myrapname.com", () => {
     const firstName = await page.isVisible('[name=firstname]')
     const initial = await page.isVisible('[name=lastinitial]')
     const nickname = await page.isVisible('text=Use Nickname')
+
     expect(firstName).toBeTruthy()
     expect(initial).toBeTruthy()
     expect(nickname).toBeTruthy()
@@ -54,13 +57,14 @@ describe("Myrapname.com", () => {
   it("should display an error message if first name input is empty", async () => {
     await page.fill('[name=lastinitial]', 'M')
     await page.click('text=Suggest Male Rap Name')
+
     expect(await page.isVisible('text=You must enter your first name'))
   });
 
   it("should allow a user to modify input values", async () => {
     await page.fill('[name=firstname]', 'Kristi')
     await page.fill('[name=lastinitial]', 'A')
-
+    
     expect(await page.innerText('[name=firstname]', 'Kristi'))
     expect(await page.innerText('[name=lastinitial]', 'A'))
     expect(await page.uncheck('[type=checkbox]')) // verify that checkbox is not checked?

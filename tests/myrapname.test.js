@@ -36,8 +36,10 @@ describe("Myrapname.com", () => {
   });
 
   it("should display buttons", async () => {
-    expect(await page.click('text=Suggest Male Rap Name'))
-    expect(await page.click('text=Suggest Female Rap Name'))
+    const maleSubmitButton = await page.isVisible('text=Suggest Male Rap Name')
+    const femaleSubmitButton = await page.isVisible('text=Suggest Female Rap Name')
+    expect(maleSubmitButton).toBeTruthy()
+    expect(femaleSubmitButton).toBeTruthy()
   });
 
   it("should display inputs", async () => {

@@ -54,4 +54,12 @@ describe("Myrapname.com", () => {
     expect(await page.uncheck('[type=checkbox]')) // verify that checkbox is not checked?
   });
 
+  it("should allow a user to create a male rap name", async () => {
+    await page.fill('[name=firstname]', 'Felix')
+    await page.fill('[name=lastinitial]', 'F')
+    await page.click('text=Suggest Male Rap Name')
+    const result = await page.innerText("div:has(div:has(h1))")
+
+    expect(await page.isVisible(`text=${result}`))
+  });
 });

@@ -8,7 +8,7 @@ describe("Myrapname.com", () => {
 
   /* SETUP */
   beforeAll(async () => {
-    browser = await chromium.launch({headless: false, slowMo: 50})
+    browser = await chromium.launch()
     page = await browser.newPage()
 
     if(!page) throw new Error("No Connection Established")

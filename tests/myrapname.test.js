@@ -43,9 +43,12 @@ describe("Myrapname.com", () => {
   });
 
   it("should display inputs", async () => {
-    expect(await page.click('[name=firstname]'))
-    expect(await page.click('[name=lastinitial]'))
-    expect(await page.click('text=Use Nickname'))
+    const firstName = await page.isVisible('[name=firstname]')
+    const initial = await page.isVisible('[name=lastinitial]')
+    const nickname = await page.isVisible('text=Use Nickname')
+    expect(firstName).toBeTruthy()
+    expect(initial).toBeTruthy()
+    expect(nickname).toBeTruthy()
   });
 
   it("should display an error message if first name input is empty", async () => {

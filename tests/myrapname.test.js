@@ -24,13 +24,15 @@ describe("Myrapname.com", () => {
   });
 
   /* TESTS */
+
   it("should load myrapname.com", async () => {
     expect(page).not.toBeNull();
     expect(await page.title()).toBe('My Rap Name - A generator to automatically make rapper names')
   });
 
   it("should display a form", async () => {
-    expect(await page.click('form'))
+    const form = await page.isVisible('form')
+    expect(form).toBeTruthy()
   });
 
   it("should display buttons", async () => {

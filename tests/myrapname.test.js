@@ -62,4 +62,23 @@ describe("Myrapname.com", () => {
 
     expect(await page.isVisible(`text=${result}`))
   });
+
+  it("should allow a user to create multiple female rap names and view previous names", async () => {
+    const result = await page.innerText("div:has(div:has(h1))")
+    await page.fill('[name=firstname]', 'Kristi')
+    await page.fill('[name=lastinitial]', 'M')
+    await page.click('text=Suggest Female Rap Name')
+    const result1 = await page.innerText("div:has(div:has(h1))")
+
+    expect(await page.isVisible(`text=${result1}`))
+
+    await page.fill('[name=firstname]', 'Kristi')
+    await page.fill('[name=lastinitial]', 'M')
+    await page.click('text=Suggest Female Rap Name')
+    const result2 = await page.innerText("div:has(div:has(h1))")
+
+    expect(await page.isVisible(`text=${result2}`))
+    expect(await page.isVisible(`text=${result1}`))
+    expect(await page.isVisible(`text=${result}`))
+  });
 });

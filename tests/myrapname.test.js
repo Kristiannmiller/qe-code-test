@@ -1,9 +1,12 @@
+/* DEPENDENCIES */
 const { chromium } = require('playwright')
 
 describe("Myrapname.com", () => {
+  /* VARIABLES */
   let browser
   let page
 
+  /* SETUP */
   beforeAll(async () => {
     browser = await chromium.launch({headless: false, slowMo: 50})
     page = await browser.newPage()
@@ -15,10 +18,12 @@ describe("Myrapname.com", () => {
     });
   });
 
+  /* CLEANUP */
   afterAll(async () => {
     await browser.close();
   });
 
+  /* TESTS */
   it("should load myrapname.com", async () => {
     expect(page).not.toBeNull();
     expect(await page.title()).toBe('My Rap Name - A generator to automatically make rapper names')
@@ -39,7 +44,7 @@ describe("Myrapname.com", () => {
     expect(await page.click('text=Use Nickname'))
   });
 
-  it("should display an error message if first name input is left blank", async () => {
+  it("should display an error message if first name input is empty", async () => {
     await page.fill('[name=lastinitial]', 'M')
     await page.click('text=Suggest Male Rap Name')
     expect(await page.isVisible('text=You must enter your first name'))

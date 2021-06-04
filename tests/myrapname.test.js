@@ -14,7 +14,7 @@ describe("Myrapname.com", () => {
     if(!page) throw new Error("No Connection Established")
 
     await page.goto("https://www.myrapname.com", {
-      waitUntil: "networkidle0"
+      waitUntil: "networkidle"
     });
   });
 
